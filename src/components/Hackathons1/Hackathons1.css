@@ -1,0 +1,171 @@
+.hackathons1-section {
+  --base-100: #8e9487;
+  --base-200: #1e1e1c;
+  --base-300: #9381ff;
+  --base-400: #f0c808;
+  --base-500: #bc4749;
+  --base-600: #c2c1c2;
+  width: 100vw;
+  position: relative;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+.hackathons1-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hackathons1-section h1 {
+  text-transform: uppercase;
+  font-family: "Newsflash BB", sans-serif;
+  font-size: clamp(3rem, 10vw, 15rem);
+  font-weight: 500;
+  letter-spacing: -0.025rem;
+  line-height: 1;
+}
+
+.hackathons1-section p {
+  font-family: "DM Sans", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.025rem;
+  line-height: 1.25;
+}
+
+.hackathons1-section section {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 100svh;
+  overflow: hidden;
+}
+
+.hackathons1-section section.four {
+  height: 200svh;
+}
+
+.hackathons1-section .container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  transform: rotate(30deg);
+  transform-origin: bottom left;
+  will-change: transform;
+}
+
+.hackathons1-section .one .container {
+  background-color: var(--base-100);
+  color: #000;
+}
+
+.hackathons1-section .two .container {
+  background-color: var(--base-200);
+  color: #fff;
+}
+
+.hackathons1-section .three .container {
+  background-color: var(--base-300);
+  color: #000;
+}
+
+.hackathons1-section .four .container {
+  background-color: var(--base-400);
+  color: #000;
+}
+
+.hackathons1-section .five .container {
+  background-color: var(--base-500);
+  color: #fff;
+}
+
+.hackathons1-section .six .container {
+  background-color: var(--base-600);
+  color: #000;
+}
+
+.hackathons1-section .container .col {
+  flex: 1;
+  display: flex;
+}
+
+.hackathons1-section .container .col .img {
+  width: 35%;
+  height: auto;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.hackathons1-section .one .container .col:nth-child(2),
+.hackathons1-section .five .container .col:nth-child(2),
+.hackathons1-section .six .container .col:nth-child(2) {
+  align-items: flex-end;
+}
+
+.hackathons1-section .two .container .col:nth-child(1),
+.hackathons1-section .three .container .col:nth-child(2) {
+  justify-content: center;
+  align-items: center;
+}
+
+.hackathons1-section .two .container .col:nth-child(2),
+.hackathons1-section .three .container .col:nth-child(1) {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hackathons1-section .four .container {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+
+.hackathons1-section .four .img {
+  width: 30%;
+  margin-bottom: 4rem;
+}
+
+.hackathons1-section .four p {
+  width: 50%;
+}
+
+.hackathons1-section footer {
+  position: relative;
+  width: 100%;
+  height: 70svh;
+  padding: 2rem;
+  background-color: #0f0f0f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .hackathons1-section p {
+    font-size: 1.25rem;
+  }
+
+  .hackathons1-section .container {
+    flex-direction: column;
+  }
+
+  .hackathons1-section .two .container .col:nth-child(2),
+  .hackathons1-section .three .container .col:nth-child(1) {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .hackathons1-section section.four {
+    height: 125svh;
+  }
+
+  .hackathons1-section .four p {
+    width: 100%;
+  }
+}

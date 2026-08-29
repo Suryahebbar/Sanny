@@ -1,0 +1,157 @@
+.intro-section {
+  background-color: #141414;
+  font-family: "DM Sans", sans-serif;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.intro-section section {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 2em;
+  overflow: hidden;
+}
+
+.intro-section .copy-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 2rem;
+}
+
+.intro-section .copy-container h1 {
+  width: 70%;
+  color: #141414;
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.intro-section .hero .copy-container {
+  background: #fe6d38;
+}
+
+.intro-section .cta .copy-container {
+  background: #c6fe69;
+}
+
+.intro-section .outro .copy-container {
+  background: #7a78ff;
+}
+
+.intro-section .about .copy-container,
+.intro-section .features .copy-container {
+  border: 0.15rem dashed rgb(60, 60, 60);
+}
+
+.intro-section .anime-text {
+  width: 60%;
+}
+
+.intro-section .anime-text p {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.intro-section .anime-text .word {
+  display: inline-block;
+  position: relative;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
+  padding: 0.1rem 0.2rem;
+  border-radius: 2rem;
+  will-change: background-color, opacity;
+}
+
+.intro-section .anime-text .word.keyword-wrapper {
+  margin: 0 0.4rem 0.2rem 0.2rem;
+}
+
+.intro-section .anime-text .word span {
+  position: relative;
+  color: #fff;
+  display: inline-block;
+  text-transform: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.intro-section .anime-text .word span.keyword {
+  border-radius: 2rem;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 0.1rem 0;
+  color: #141414;
+}
+
+.intro-section .anime-text .word span.keyword::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 1rem);
+  height: calc(100% + 0.4rem);
+  background-color: #fff;
+  border-radius: 2rem;
+  z-index: -1;
+}
+
+.intro-section .anime-text .word span.keyword.vibrant::before,
+.intro-section .anime-text .word span.keyword.shape::before,
+.intro-section .anime-text .word span.keyword.interactive::before {
+  background-color: #7a78ff;
+}
+
+.intro-section .anime-text .word span.keyword.living::before,
+.intro-section .anime-text .word span.keyword.expression::before,
+.intro-section .anime-text .word span.keyword.storytelling::before {
+  background-color: #fe6d38;
+}
+
+.intro-section .anime-text .word span.keyword.clarity::before,
+.intro-section .anime-text .word span.keyword.intuitive::before,
+.intro-section .anime-text .word span.keyword.vision::before {
+  background-color: #c6fe69;
+}
+
+.intro-section .anime-text .word,
+.intro-section .anime-text .word span {
+  opacity: 0;
+}
+
+@media (max-width: 1000px) {
+  .intro-section .copy-container h1 {
+    width: 90%;
+    font-size: 2rem;
+  }
+
+  .intro-section .anime-text {
+    width: 90%;
+  }
+
+  .intro-section .anime-text p {
+    font-size: 1.25rem;
+  }
+
+  .intro-section .anime-text .word {
+    margin-right: 0.1rem;
+    margin-bottom: 0.15rem;
+    padding: 0.1rem 0.2rem;
+  }
+
+  .intro-section .anime-text .word.keyword-wrapper {
+    margin: 0 0.2rem 0.1rem 0.1rem;
+  }
+}

@@ -1,0 +1,185 @@
+.skills-section {
+  --bg: #0f0f0f;
+  --fg: #fff;
+  --card-1: #b2b2b2;
+  --card-2: #ce2017;
+  --card-3: #2f2f2f;
+  width: 100vw;
+  position: relative;
+  background-color: var(--bg);
+  font-family: "Instrument Serif", sans-serif;
+}
+
+.skills-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.skills-section h1 {
+  font-size: 4rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.skills-section p {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.skills-section section {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  padding: 2rem;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.skills-section .intro,
+.skills-section .outro {
+  text-align: center;
+  align-content: center;
+}
+
+.skills-section .intro h1,
+.skills-section .outro h1 {
+  width: 30%;
+  margin: 0 auto;
+}
+
+.skills-section .sticky {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills-section .sticky-header {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.skills-section .sticky-header h1 {
+  position: relative;
+  text-align: center;
+  will-change: transform, opacity;
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+.skills-section .card-container {
+  position: relative;
+  width: 75%;
+  display: flex;
+  perspective: 1000px;
+  transform: translateY(40px);
+  will-change: width;
+}
+
+.skills-section .card {
+  position: relative;
+  flex: 1;
+  aspect-ratio: 5/7;
+  transform-style: preserve-3d;
+  transform-origin: top;
+}
+
+.skills-section #card-1 {
+  border-radius: 20px 0 0 20px;
+}
+
+.skills-section #card-3 {
+  border-radius: 0 20px 20px 0;
+}
+
+.skills-section .card-front,
+.skills-section .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.skills-section .card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: rotateY(180deg);
+  padding: 2rem;
+}
+
+.skills-section .card-back span {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  opacity: 0.4;
+}
+
+.skills-section #card-1 .card-back {
+  background-color: var(--card-1);
+  color: var(--bg);
+}
+
+.skills-section #card-2 .card-back {
+  background-color: var(--card-2);
+}
+
+.skills-section #card-3 .card-back {
+  background-color: var(--card-3);
+}
+
+@media (max-width: 1000px) {
+  .skills-section h1 {
+    font-size: 3rem;
+  }
+
+  .skills-section .intro h1,
+  .skills-section .outro h1 {
+    width: 100%;
+  }
+
+  .skills-section .sticky {
+    height: max-content;
+    padding: 4rem 2rem;
+    flex-direction: column;
+  }
+
+  .skills-section .sticky-header {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin-bottom: 4rem;
+  }
+
+  .skills-section .sticky-header h1 {
+    opacity: 1;
+  }
+
+  .skills-section .card-container {
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .skills-section .card {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 20px !important;
+  }
+
+  .skills-section #card-1,
+  .skills-section #card-2,
+  .skills-section #card-3,
+  .skills-section .card-back {
+    transform: none;
+  }
+}

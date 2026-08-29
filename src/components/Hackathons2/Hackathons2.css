@@ -1,0 +1,77 @@
+.hackathons2-section {
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.hackathons2-section .spotlight {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  background-color: #def2e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hackathons2-section .headline {
+  text-transform: uppercase;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  line-height: 0.8;
+  letter-spacing: -2%;
+  font-weight: 900;
+  color: #000;
+}
+
+.hackathons2-section .line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.hackathons2-section .spot {
+  position: relative;
+  flex-shrink: 0;
+  width: 0.4em;
+  height: 0.4em;
+  margin: 0 0.2em;
+  transform: translateY(0.05em);
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.hackathons2-section .spot-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.4em;
+  height: 0.4em;
+  border: 2px solid #000;
+  border-radius: 0.04em;
+  background: #000;
+  will-change: transform, width, height;
+  overflow: hidden;
+}
+
+.hackathons2-section .spot-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  transform: scale(1.5);
+  will-change: transform;
+  opacity: 0;
+}
+
+@media (max-width: 999px) {
+  .hackathons2-section .spot {
+    cursor: default;
+    pointer-events: none;
+  }
+}

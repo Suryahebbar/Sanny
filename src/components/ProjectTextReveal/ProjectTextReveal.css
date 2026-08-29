@@ -1,0 +1,187 @@
+.project-text-reveal-section {
+  font-family: "Lay Grotesk - Trial", sans-serif;
+  width: 100vw;
+  position: relative;
+  background-color: #fff;
+  color: #000;
+}
+
+.project-text-reveal-section h1 {
+  font-size: 3.5rem;
+  font-weight: 500;
+  letter-spacing: -0.05rem;
+  line-height: 1;
+}
+
+.project-text-reveal-section p {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 1em;
+}
+
+.project-text-reveal-section span {
+  color: #000;
+  display: block;
+  text-transform: uppercase;
+  font-family: "Apercu Mono Pro";
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.project-text-reveal-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-text-reveal-section nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  padding: 1.5em 2em;
+}
+
+.project-text-reveal-section nav .col:nth-child(1) {
+  display: flex;
+}
+
+.project-text-reveal-section nav .col:nth-child(2) {
+  text-align: right;
+}
+
+.project-text-reveal-section nav span {
+  color: #909090;
+  mix-blend-mode: difference;
+}
+
+.project-text-reveal-section section {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 2em;
+}
+
+.project-text-reveal-section .col,
+.project-text-reveal-section .sub-col {
+  flex: 1;
+}
+
+.project-text-reveal-section .hero,
+.project-text-reveal-section .about-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-text-reveal-section .hero-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.project-text-reveal-section .hero .header {
+  width: 50%;
+  text-align: center;
+  z-index: 2;
+}
+
+.project-text-reveal-section .hero .header h1 {
+  color: #909090;
+}
+
+.project-text-reveal-section .about-img {
+  height: max-content;
+  padding: 8em 2em;
+}
+
+.project-text-reveal-section .about-img img {
+  width: 20%;
+  aspect-ratio: 4/5;
+}
+
+.project-text-reveal-section .about,
+.project-text-reveal-section .philosophy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-text-reveal-section .philosophy {
+  background-color: #202020;
+}
+
+.project-text-reveal-section .philosophy h1,
+.project-text-reveal-section .philosophy span {
+  color: #fff;
+}
+
+.project-text-reveal-section .about h1,
+.project-text-reveal-section .philosophy h1 {
+  text-indent: 25%;
+}
+
+.project-text-reveal-section .story {
+  height: max-content;
+  display: flex;
+  gap: 1em;
+  margin-bottom: 8em;
+}
+
+.project-text-reveal-section footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1em;
+  padding: 6em 2em 1.5em 2em;
+}
+
+.project-text-reveal-section footer .col {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.project-text-reveal-section footer .sub-col {
+  display: flex;
+  align-items: flex-end;
+}
+
+.project-text-reveal-section .line {
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+@media (max-width: 900px) {
+  .project-text-reveal-section h1 {
+    font-size: 2rem;
+  }
+
+  .project-text-reveal-section nav .col:nth-child(1) .sub-col:nth-child(2) {
+    display: none;
+  }
+
+  .project-text-reveal-section .hero .header {
+    width: 95%;
+  }
+
+  .project-text-reveal-section .about-img img {
+    width: 100%;
+  }
+
+  .project-text-reveal-section .story {
+    flex-direction: column;
+  }
+
+  .project-text-reveal-section footer .col:nth-child(1) {
+    flex-direction: column-reverse;
+    gap: 4em;
+  }
+
+  .project-text-reveal-section footer .col:nth-child(2) {
+    display: none;
+  }
+}

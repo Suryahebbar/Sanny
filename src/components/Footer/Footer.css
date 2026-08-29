@@ -1,0 +1,34 @@
+.footer-section {
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-section .hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  background-color: #0f0f0f;
+}
+
+.footer-section canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.footer-section .logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+}
+
+.footer-section .logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  visibility: hidden;
+}
