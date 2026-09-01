@@ -51,18 +51,6 @@
   background-size: cover;
 }
 
-.education-section .outro {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #000;
-}
-
-.education-section .outro p {
-  color: #ded8c8;
-  font-size: 30px;
-  letter-spacing: -0.005em;
-}
 
 .education-section .sticky {
   position: relative;

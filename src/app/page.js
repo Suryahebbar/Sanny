@@ -19,8 +19,8 @@ export default function Home() {
         <main style={{ overflowX: "hidden" }}>
           <LandingPage />
           <Intro />
-          <Education />
           <ProjectTextReveal />
+          <Education />
           <Experience />
           <Hackathons1 />
           <Hackathons2 />

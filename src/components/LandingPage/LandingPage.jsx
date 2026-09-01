@@ -177,7 +177,7 @@ export default function LandingPage() {
 
       <nav className="landing-nav">
         <div className="nav-logo">
-          <a href="#">Canon</a>
+          <a href="#">Surya</a>
         </div>
         <div className="nav-links">
           <a href="#">Index</a>
@@ -194,7 +194,7 @@ export default function LandingPage() {
         </div>
 
         <div className="header">
-          <h1 className="header-title">Canon</h1>
+          <h1 className="header-title">Surya</h1>
         </div>
 
         <div className="hero-footer">

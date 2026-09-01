@@ -180,32 +180,6 @@ export default function Intro() {
           </div>
         </div>
       </section>
-
-      <section className="cta">
-        <div className="copy-container">
-          <h1>Join Huebase now to create expressive interfaces.</h1>
-        </div>
-      </section>
-
-      <section className="features anime-text-container">
-        <div className="copy-container">
-          <div className="anime-text">
-            <p>
-              Huebase brings motion, structure, and creativity together in one
-              intuitive space. Design responsive layouts, choreograph smooth
-              animations, and explore rich storytelling visuals. All without
-              writing a single line of code or program.
-            </p>
-            <p>
-              With built-in support for interactive components, scroll-based
-              effects, and real-time previews, Huebase lets you prototype bold,
-              expressive interfaces that feel as good as they look. It's the
-              fastest way to bring your creative vision to life on the modern web.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section className="outro">
         <div className="copy-container">
           <h1>Built for designers who shape the web.</h1>

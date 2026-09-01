@@ -36,16 +36,11 @@
   background: #fe6d38;
 }
 
-.intro-section .cta .copy-container {
-  background: #c6fe69;
-}
-
 .intro-section .outro .copy-container {
   background: #7a78ff;
 }
 
-.intro-section .about .copy-container,
-.intro-section .features .copy-container {
+.intro-section .about .copy-container {
   border: 0.15rem dashed rgb(60, 60, 60);
 }
 

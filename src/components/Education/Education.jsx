@@ -184,7 +184,6 @@ export default function Education() {
         </div>
       </section>
 
-      <section className="outro"><p>(Your next section goes here)</p></section>
     </div>
   );
 }
