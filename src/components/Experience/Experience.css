@@ -4,91 +4,15 @@
   width: 100vw;
   font-family: "PP Neue Montreal", sans-serif;
   position: relative;
-}
-
-.experience-section img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.experience-section h1 {
-  font-size: 4rem;
-  font-weight: 500;
-  letter-spacing: -0.075rem;
-  line-height: 1.125;
-}
-
-.experience-section h3 {
-  font-size: 2.25rem;
-  font-weight: 500;
-  letter-spacing: -0.025rem;
-  line-height: 1.125;
+  background-color: var(--dark);
+  color: var(--light);
 }
 
 .experience-section .container {
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: var(--light);
-  will-change: background-color;
-}
-
-.experience-section .hero,
-.experience-section .outro {
-  position: relative;
-  width: 100%;
-  height: 100svh;
-  padding: 2rem;
-  align-content: center;
-  text-align: center;
-}
-
-.experience-section .hero h1,
-.experience-section .outro h1 {
-  width: 75%;
-  margin: 0 auto;
-}
-
-.experience-section .outro {
   background-color: var(--dark);
-  color: var(--light);
-}
-
-.experience-section .marquee {
-  position: relative;
-  width: 100%;
-  height: 50svh;
-  overflow: hidden;
-}
-
-.experience-section .marquee-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-5deg);
-  width: 150%;
-  height: 100%;
-}
-
-.experience-section .marquee-images {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-75%, -50%);
-  width: 200%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-  will-change: transform;
-}
-
-.experience-section .marquee-img {
-  flex: 1;
-  width: 100%;
-  aspect-ratio: 5/3;
 }
 
 .experience-section .horizontal-scroll {
@@ -96,6 +20,7 @@
   width: 100%;
   height: 100svh;
   overflow: hidden;
+  background-color: var(--dark);
 }
 
 .experience-section .horizontal-scroll-wrapper {
@@ -107,76 +32,59 @@
 }
 
 .experience-section .horizontal-slide {
-  flex: 1;
+  width: 100vw;
   height: 100%;
   display: flex;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.experience-section .horizontal-slide:not(.horizontal-spacer) {
   background-color: var(--dark);
   color: var(--light);
 }
 
-.experience-section .horizontal-slide .col:nth-child(1) {
-  flex: 3;
+.experience-section .horizontal-slide .img-col {
+  flex: 1.2;
+  height: 100%;
+  overflow: hidden;
 }
 
-.experience-section .horizontal-slide .col:nth-child(2) {
-  flex: 2;
+.experience-section .horizontal-slide .img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.experience-section .horizontal-scroll .col {
+.experience-section .horizontal-slide .text-col {
+  flex: 1;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 4rem;
 }
 
-.experience-section .horizontal-slide .col h3,
-.experience-section .horizontal-slide .col img {
-  width: 75%;
-}
-
-.experience-section .horizontal-slide .col img {
-  height: 75%;
+.experience-section .horizontal-slide .text-col h3 {
+  font-size: 2.25rem;
+  font-weight: 400;
+  letter-spacing: -0.025rem;
+  line-height: 1.25;
+  color: var(--light);
+  max-width: 85%;
 }
 
 @media (max-width: 1000px) {
-  .experience-section h1 {
-    font-size: 2.25rem;
-    letter-spacing: -0.05rem;
-  }
-
-  .experience-section h3 {
-    font-size: 1.5rem;
-  }
-
-  .experience-section .hero h1,
-  .experience-section .outro h1 {
-    width: 100%;
-  }
-
-  .experience-section .marquee-wrapper {
-    width: 300%;
-  }
-
   .experience-section .horizontal-slide {
-    padding: 4rem;
-    flex-direction: column-reverse;
-    gap: 2rem;
+    flex-direction: column;
   }
 
-  .experience-section .horizontal-slide .col:nth-child(1) {
-    align-items: flex-start;
+  .experience-section .horizontal-slide .img-col {
+    height: 50%;
   }
 
-  .experience-section .horizontal-slide .col h3 {
-    width: 100%;
+  .experience-section .horizontal-slide .text-col {
+    height: 50%;
+    padding: 2rem;
   }
 
-  .experience-section .horizontal-slide .col img {
-    width: 100%;
-    height: 100%;
+  .experience-section .horizontal-slide .text-col h3 {
+    font-size: 1.35rem;
+    max-width: 100%;
   }
 }

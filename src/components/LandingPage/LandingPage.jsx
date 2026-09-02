@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { CustomEase } from "gsap/all";
@@ -9,6 +9,16 @@ import "./LandingPage.css";
 
 export default function LandingPage() {
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+      document.body.style.overflow = "hidden";
+    }
+  }, []);
 
   useGSAP(
     () => {
@@ -31,7 +41,11 @@ export default function LandingPage() {
       const counterContainer = document.querySelector(".preloader-counter");
       const counter = { value: 0 };
 
-      const tl = gsap.timeline();
+      const tl = gsap.timeline({
+        onComplete: () => {
+          document.body.style.overflow = "";
+        },
+      });
 
       tl.to(counter, {
         value: 100,
