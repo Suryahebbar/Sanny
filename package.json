@@ -15,6 +15,7 @@
     "next": "15.3.1",
     "next-transition-router": "^0.2.11",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "three": "^0.185.1"
   }
 }
