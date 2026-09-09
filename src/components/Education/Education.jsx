@@ -1,189 +1,80 @@
 "use client";
 
-import React, { useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
+import React from "react";
+import Copy from "../Copy";
 import "./Education.css";
 
 export default function Education() {
-  const containerRef = useRef(null);
-
-  useGSAP(
-    () => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      const stickySection = containerRef.current.querySelector(".sticky");
-      const stickyHeader = containerRef.current.querySelector(".sticky-header");
-      const cards = containerRef.current.querySelectorAll(".card");
-      const stickyHeight = window.innerHeight * 5;
-
-      const transforms = [
-        [
-          [10, 50, -10, 10],
-          [20, -10, -45, 20],
-        ],
-        [
-          [0, 47.5, -10, 15],
-          [-25, 15, -45, 30],
-        ],
-        [
-          [0, 52.5, -10, 5],
-          [15, -5, -40, 60],
-        ],
-        [
-          [0, 50, 30, -80],
-          [20, -10, 60, 5],
-        ],
-        [
-          [0, 55, -15, 30],
-          [25, -15, 60, 95],
-        ],
-      ];
-
-      ScrollTrigger.create({
-        trigger: stickySection,
-        start: "top top",
-        end: `+=${stickyHeight}px`,
-        pin: true,
-        pinSpacing: true,
-        onUpdate: (self) => {
-          const progress = self.progress;
-
-          if (stickyHeader) {
-            const maxTranslate = stickyHeader.offsetWidth - window.innerWidth;
-            const translateX = -progress * maxTranslate;
-            gsap.set(stickyHeader, { x: translateX });
-          }
-
-          cards.forEach((card, index) => {
-            const delay = index * 0.1125;
-            const cardProgress = Math.max(0, Math.min((progress - delay) * 2, 1));
-
-            if (cardProgress > 0) {
-              const cardStartX = 25;
-              const cardEndX = -650;
-              const yPos = transforms[index][0];
-              const rotations = transforms[index][1];
-
-              const cardX = gsap.utils.interpolate(
-                cardStartX,
-                cardEndX,
-                cardProgress
-              );
-
-              const yProgress = cardProgress * 3;
-              const yIndex = Math.min(Math.floor(yProgress), yPos.length - 2);
-              const yInterpolation = yProgress - yIndex;
-              const cardY = gsap.utils.interpolate(
-                yPos[yIndex],
-                yPos[yIndex + 1],
-                yInterpolation
-              );
-
-              const cardRotation = gsap.utils.interpolate(
-                rotations[yIndex],
-                rotations[yIndex + 1],
-                yInterpolation
-              );
-
-              gsap.set(card, {
-                xPercent: cardX,
-                yPercent: cardY,
-                rotation: cardRotation,
-                opacity: 1,
-              });
-            } else {
-              gsap.set(card, { opacity: 0 });
-            }
-          });
-        },
-      });
-    },
-    { scope: containerRef }
-  );
-
   return (
-    <div ref={containerRef} className="education-section">
-      <nav>
-        <div className="logo">
-          <a href="#">Nebulon</a>
-        </div>
-        <div className="nav-items">
-          <a href="#">Catalog</a>
-          <a href="#">Cart</a>
-        </div>
-      </nav>
-
-      <section className="hero"></section>
-
-      <section className="sticky">
-        <div className="sticky-header">
-          <h1>Nebulon Does it again.</h1>
+    <div className="education-section">
+      <section className="hero">
+        <div className="hero-img">
+          <img src="/hero.jpg" alt="" />
         </div>
 
-        <div className="card">
-          <div className="card-img"><img src="/assets/education/img1.jpg" alt="" /></div>
-          <div className="card-content">
-            <div className="card-title"><h2>Immersive Training Simulations</h2></div>
-            <div className="card-description">
-              <p>
-                Revolutionize hands-on learning with lifelike training
-                environments, enhancing skill development and retention.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-img"><img src="/assets/education/img2.jpg" alt="" /></div>
-          <div className="card-content">
-            <div className="card-title"><h2>Virtual Design Collaboration</h2></div>
-            <div className="card-description">
-              <p>
-                Enable remote teams to co-create in 3D spaces, speeding up design
-                iterations and boosting innovation.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-img"><img src="/assets/education/img3.jpg" alt="" /></div>
-          <div className="card-content">
-            <div className="card-title"><h2>Immersive Product Demos</h2></div>
-            <div className="card-description">
-              <p>
-                Showcase products in a fully interactive, 360-degree experience,
-                making presentations more engaging and memorable.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-img"><img src="/assets/education/img4.jpg" alt="" /></div>
-          <div className="card-content">
-            <div className="card-title"><h2>Remote Healthcare Solutions</h2></div>
-            <div className="card-description">
-              <p>
-                Empower healthcare professionals with virtual consultations and
-                remote diagnostics in immersive 3D environments.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="card">
-          <div className="card-img"><img src="/assets/education/img5.jpg" alt="" /></div>
-          <div className="card-content">
-            <div className="card-title"><h2>Interactive Entertainment</h2></div>
-            <div className="card-description">
-              <p>
-                Deliver a new dimension of gaming and entertainment with fully
-                immersive and interactive virtual experiences.
-              </p>
-            </div>
-          </div>
+        <div className="header">
+          <Copy delay={0.5}>
+            <h1>We craft identities and experiences for the bold.</h1>
+          </Copy>
         </div>
       </section>
 
+      <section className="about">
+        <Copy>
+          <span>Design & Strategy for the Vision-Driven</span>
+        </Copy>
+        <div className="header">
+          <Copy>
+            <h1>
+              We partner with founders, innovators, and change-makers to shape
+              brands that resonate. From first lines of code to global
+              launches, we bring focus, elegance, and intent to every stage.
+            </h1>
+          </Copy>
+        </div>
+      </section>
+
+      <section className="about-img">
+        <img src="/about.jpg" alt="" />
+      </section>
+
+      <section className="story">
+        <div className="col">
+          <Copy>
+            <h1>
+              The Story Behind <br /> Our Stillness
+            </h1>
+          </Copy>
+        </div>
+        <div className="col">
+          <Copy>
+            <p>
+              Greyloom was born from a simple idea: that creativity, when
+              wielded with intention, can quietly reshape the world. In an era
+              of overstimulation and fleeting trends, we chose a different
+              path. One of clarity, restraint, and long-form vision.
+            </p>
+
+            <p>
+              We began as a small collective of designers, developers, and
+              strategists who shared an obsession with thoughtful execution.
+              No shortcuts, no templates. Just the hard, honest work of
+              listening deeply, thinking critically, and building beautifully.
+              Over time, our work began to attract the kind of clients we had
+              always hoped for. Visionary founders, principled organizations,
+              and global teams with sharp ideas and quiet confidence.
+            </p>
+
+            <p>
+              We don’t chase virality. We don’t trade in noise. We build for
+              the long haul: timeless identities, seamless digital
+              experiences, and strategies that evolve with clarity and
+              purpose. Greyloom exists for those who believe that the most
+              enduring ideas don’t demand attention. They earn it.
+            </p>
+          </Copy>
+        </div>
+      </section>
     </div>
   );
 }

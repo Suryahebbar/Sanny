@@ -9,6 +9,7 @@ import "./LandingPage.css";
 
 export default function LandingPage() {
   const containerRef = useRef(null);
+  const heroRef = useRef(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -18,6 +19,89 @@ export default function LandingPage() {
       window.scrollTo(0, 0);
       document.body.style.overflow = "hidden";
     }
+    return () => {
+      if (typeof window !== "undefined") {
+        document.body.style.overflow = "";
+      }
+    };
+  }, []);
+
+  // Feature 5: Interactive Multiplane Mouse Parallax Depth
+  useEffect(() => {
+    if (typeof window === "undefined" || !window.matchMedia("(pointer: fine)").matches) return;
+
+    const hero = heroRef.current;
+    if (!hero) return;
+
+    let isIntroDone = false;
+    const introTimer = setTimeout(() => {
+      isIntroDone = true;
+    }, 7500);
+
+    const onMouseMove = (e) => {
+      if (!isIntroDone) return;
+
+      const rect = hero.getBoundingClientRect();
+      const xNorm = ((e.clientX - rect.left) / rect.width - 0.5) * 2; // -1 to +1
+      const yNorm = ((e.clientY - rect.top) / rect.height - 0.5) * 2; // -1 to +1
+
+      // 1. Background image moves subtly in opposite direction (deepest layer)
+      gsap.to(".hero-bg img", {
+        x: -xNorm * 18,
+        y: -yNorm * 14,
+        duration: 0.9,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+
+      // 2. Ambient Ember Backlight floats in mid-depth layer
+      gsap.to(".hero-ember-glow", {
+        x: xNorm * 26,
+        y: yNorm * 18,
+        duration: 1.1,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+
+      // 3. Giant "SURYA" Headline floats in foreground layer
+      gsap.to(".header h1", {
+        x: xNorm * 32,
+        y: yNorm * 22,
+        duration: 0.7,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+
+      // 4. Footer tags float with subtle parallax
+      gsap.to(".hero-footer", {
+        x: xNorm * 14,
+        y: yNorm * 8,
+        duration: 0.8,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    };
+
+    const onMouseLeave = () => {
+      if (!isIntroDone) return;
+
+      gsap.to([".hero-bg img", ".hero-ember-glow", ".header h1", ".hero-footer"], {
+        x: 0,
+        y: 0,
+        duration: 1.2,
+        ease: "elastic.out(1.1, 0.4)",
+        overwrite: "auto",
+      });
+    };
+
+    hero.addEventListener("mousemove", onMouseMove);
+    hero.addEventListener("mouseleave", onMouseLeave);
+
+    return () => {
+      clearTimeout(introTimer);
+      hero.removeEventListener("mousemove", onMouseMove);
+      hero.removeEventListener("mouseleave", onMouseLeave);
+    };
   }, []);
 
   useGSAP(
@@ -34,8 +118,12 @@ export default function LandingPage() {
       };
 
       const headerSplit = splitText(".header-title", "chars", "char");
-      const navSplit = splitText(".landing-nav a", "words", "word");
       const footerSplit = splitText(".hero-footer p", "words", "word");
+
+      // Prevent FOUC: Ensure chars/words are positioned off-screen before showing container
+      gsap.set(headerSplit.chars, { x: "105%" });
+      gsap.set(footerSplit.words, { y: "105%" });
+      gsap.set([".header-title", ".hero-footer p"], { visibility: "visible" });
 
       const counterProgress = document.querySelector(".preloader-counter h1");
       const counterContainer = document.querySelector(".preloader-counter");
@@ -47,6 +135,7 @@ export default function LandingPage() {
         },
       });
 
+      // Original Timeline Pacing
       tl.to(counter, {
         value: 100,
         duration: 3,
@@ -147,8 +236,25 @@ export default function LandingPage() {
         6
       );
 
+      // Feature 3: Warm Ember Backlight bloom as scene bursts to full bleed (6.0s)
+      tl.fromTo(
+        ".hero-ember-glow",
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 0.85,
+          scale: 1,
+          duration: 2,
+          ease: "power2.out",
+          onComplete: () => {
+            const glowEl = document.querySelector(".hero-ember-glow");
+            if (glowEl) glowEl.classList.add("ember-pulsing");
+          },
+        },
+        6
+      );
+
       tl.to(
-        ".header-title .char",
+        headerSplit.chars,
         {
           x: "0%",
           duration: 1,
@@ -159,18 +265,7 @@ export default function LandingPage() {
       );
 
       tl.to(
-        ".landing-nav a .word",
-        {
-          y: "0%",
-          duration: 1,
-          ease: "power4.out",
-          stagger: 0.075,
-        },
-        7.5
-      );
-
-      tl.to(
-        ".hero-footer p .word",
+        footerSplit.words,
         {
           y: "0%",
           duration: 1,
@@ -189,23 +284,17 @@ export default function LandingPage() {
         <h1>0</h1>
       </div>
 
-      <nav className="landing-nav">
-        <div className="nav-logo">
-          <a href="#">Surya</a>
-        </div>
-        <div className="nav-links">
-          <a href="#">Index</a>
-          <a href="#">Collection</a>
-          <a href="#">Material</a>
-          <a href="#">Process</a>
-          <a href="#">Info</a>
-        </div>
-      </nav>
-
-      <section className="hero">
+      <section ref={heroRef} className="hero">
         <div className="hero-bg">
           <img src="/assets/landing-page/hero.jpg" alt="" />
+          {/* Layer: Cinematic Obsidian Vignette */}
+          <div className="hero-vignette-overlay"></div>
+          {/* Layer: Subtle Film Grain Texture */}
+          <div className="hero-grain-overlay"></div>
         </div>
+
+        {/* Ambient Warm Ember Backlight behind Headline */}
+        <div className="hero-ember-glow"></div>
 
         <div className="header">
           <h1 className="header-title">Surya</h1>

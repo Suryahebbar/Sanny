@@ -94,8 +94,8 @@ export default function Intro() {
                 revealProgress <= adjustedStart
                   ? 0
                   : revealProgress >= adjustedEnd
-                  ? 1
-                  : (revealProgress - adjustedStart) / duration;
+                    ? 1
+                    : (revealProgress - adjustedStart) / duration;
 
               word.style.opacity = wordProgress;
 

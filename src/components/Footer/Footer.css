@@ -1,34 +1,932 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+.footer-reveal-wrapper {
+  position: relative;
+  width: 100vw;
+  clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.footer-reveal-inner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  pointer-events: auto;
+  will-change: transform, filter;
+  transform-origin: bottom center;
+}
+
 .footer-section {
   width: 100vw;
+  height: 100vh;
+  min-height: 580px;
+  display: flex;
+  flex-direction: column;
+  background-color: #0b0b0d;
+  color: #ffffff;
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   position: relative;
   overflow: hidden;
+  padding: 68px 0 0 0;
+  box-sizing: border-box;
 }
 
-.footer-section .hero {
+/* Reset globals.css span rule */
+.footer-section,
+.footer-section * {
+  box-sizing: border-box;
+}
+
+.footer-section span {
+  display: inline-block;
+  text-transform: none;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.footer-section a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.footer-container {
+  max-width: 1380px;
+  width: 92%;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 18px;
+  min-height: 0;
+}
+
+/* ==========================================================================
+   Top Section: Headline & Contact Columns
+   ========================================================================== */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 36px;
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+/* Left Hero Column */
+.footer-hero-col {
+  flex: 1.15;
+  max-width: 600px;
+}
+
+/* Availability Status Pill */
+.footer-section .availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 9999px;
+  padding: 5px 13px;
+  margin-bottom: 14px;
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.08);
+}
+
+.footer-section .pulsing-emerald-dot {
+  position: relative;
+  display: inline-flex;
+  width: 8px;
+  height: 8px;
+}
+
+.footer-section .dot-ping {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: #10b981;
+  animation: emeraldPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.footer-section .dot-core {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 10px #10b981, 0 0 18px rgba(16, 185, 129, 0.5);
+}
+
+@keyframes emeraldPing {
+  0% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+
+  75%,
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.footer-section .availability-text {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #34d399;
+  text-transform: none;
+}
+
+/* Live World Clock Badge */
+.footer-section .live-clock-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 5px 11px;
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.footer-section .clock-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff5500;
+  opacity: 0.9;
+}
+
+.footer-section .clock-time {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #e4e4e7;
+  font-variant-numeric: tabular-nums;
+}
+
+.footer-headline {
+  font-size: clamp(2.2rem, 3.6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+.footer-headline .accent-dot {
+  color: #ff5500;
+  font-weight: 800;
+}
+
+/* CTA Actions Group */
+.footer-cta-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* "Get In Touch" Button */
+.get-in-touch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  background: #18181b;
+  border: 1px solid #2a2a2e;
+  border-radius: 9999px;
+  padding: 7px 7px 7px 22px;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  will-change: transform;
+}
+
+.get-in-touch-btn .btn-label {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.get-in-touch-btn .btn-badge {
+  width: 32px;
+  height: 32px;
+  background: #ff5500;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.get-in-touch-btn:hover {
+  background: #222226;
+  border-color: #3f3f46;
+  box-shadow: 0 6px 20px rgba(255, 85, 0, 0.25);
+}
+
+.get-in-touch-btn:hover .btn-badge {
+  background: #ff6a1a;
+  box-shadow: 0 0 14px rgba(255, 85, 0, 0.5);
+}
+
+/* Quick Copy Email Button */
+.quick-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(24, 24, 27, 0.85);
+  border: 1px solid #2a2a2e;
+  border-radius: 9999px;
+  padding: 7px 18px 7px 9px;
+  color: #a1a1aa;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  will-change: transform;
+  user-select: none;
+}
+
+.quick-copy-btn:hover {
+  background: #222226;
+  border-color: #3f3f46;
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+}
+
+.quick-copy-btn.copied {
+  border-color: rgba(16, 185, 129, 0.45);
+  background: rgba(16, 185, 129, 0.08);
+  color: #34d399;
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+}
+
+.copy-badge {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4d4d8;
+  transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.quick-copy-btn:hover .copy-badge {
+  background: rgba(255, 85, 0, 0.15);
+  color: #ff5500;
+}
+
+.quick-copy-btn.copied .copy-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+}
+
+.copy-label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Animated Copied to Clipboard Toast Notification */
+.copy-toast-notification {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translate(-50%, 20px) scale(0.92);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(18, 18, 22, 0.94);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 9999px;
+  padding: 10px 22px 10px 16px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 24px rgba(16, 185, 129, 0.2);
+  backdrop-filter: blur(16px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.copy-toast-notification.toast-visible {
+  transform: translate(-50%, 0) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast-emerald-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.toast-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.toast-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.toast-email {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.74rem;
+  color: #a1a1aa;
+}
+
+/* Right Info Grid */
+/* ==========================================================================
+   Glassmorphic Bento Grid
+   ========================================================================== */
+.footer-bento-grid {
+  flex: 1.25;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 14px;
+}
+
+.bento-card {
+  background: rgba(255, 255, 255, 0.022);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 13px;
+  padding: 12px 15px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 18px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at 85% 15%, rgba(255, 85, 0, 0.08) 0%, transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.bento-card:hover {
+  background: rgba(255, 255, 255, 0.038);
+  border-color: rgba(255, 85, 0, 0.34);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    0 8px 26px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(255, 85, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+.bento-card-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 7px;
+}
+
+.bento-badge-icon {
+  color: #ff5500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 6px rgba(255, 85, 0, 0.45));
+}
+
+.bento-badge-text {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #71717a;
+  text-transform: uppercase;
+}
+
+.bento-location-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bento-city-name {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.bento-card .live-clock-badge {
+  margin-top: 0;
+  padding: 4px 9px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+
+.bento-card .clock-time {
+  font-size: 0.72rem;
+}
+
+.bento-contact-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bento-contact-link {
+  color: #d4d4d8;
+  font-size: 0.86rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.bento-contact-link:hover {
+  color: #ffffff;
+}
+
+.footer-section .bento-contact-link:hover .roll-text .roll-default {
+  transform: translateY(-100%);
+}
+
+.footer-section .bento-contact-link:hover .roll-text .roll-hover {
+  transform: translateY(-100%);
+}
+
+.bento-pills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
+}
+
+.bento-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  font-size: 0.74rem;
+  color: #a1a1aa;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+.bento-nav-pill:hover {
+  background: rgba(255, 85, 0, 0.1);
+  border-color: rgba(255, 85, 0, 0.35);
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 85, 0, 0.15);
+}
+
+.footer-section .bento-nav-pill:hover .roll-text .roll-default {
+  transform: translateY(-100%);
+}
+
+.footer-section .bento-nav-pill:hover .roll-text .roll-hover {
+  transform: translateY(-100%);
+}
+
+/* Dual-Layer Rolling Text Link Effect */
+.footer-section .roll-text {
+  display: inline-flex;
+  flex-direction: column;
+  height: 1.25em;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.25;
+  vertical-align: middle;
+}
+
+.footer-section .roll-text span {
+  display: block;
+  height: 1.25em;
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.footer-section .roll-text .roll-default {
+  color: inherit;
+  transform: translateY(0%);
+}
+
+.footer-section .roll-text .roll-hover {
+  color: #ff5500;
+  transform: translateY(0%);
+}
+
+.footer-section .social-link:hover .roll-text .roll-default,
+.footer-section .link-item:hover .roll-text .roll-default,
+.footer-section .contact-link:hover .roll-text .roll-default,
+.footer-section .get-in-touch-btn:hover .roll-text .roll-default,
+.footer-section .roll-text:hover .roll-default {
+  transform: translateY(-100%);
+}
+
+.footer-section .social-link:hover .roll-text .roll-hover,
+.footer-section .link-item:hover .roll-text .roll-hover,
+.footer-section .contact-link:hover .roll-text .roll-hover,
+.footer-section .get-in-touch-btn:hover .roll-text .roll-hover,
+.footer-section .roll-text:hover .roll-hover {
+  transform: translateY(-100%);
+}
+
+.contact-link {
+  color: #8c8c94;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Social Grid */
+.social-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px 12px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #a1a1aa;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  line-height: 1.3;
+}
+
+.social-link:hover {
+  color: #ffffff;
+}
+
+.social-dot-icon {
+  width: 14px;
+  height: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff5500;
+  will-change: transform;
+}
+
+/* Helpful Links */
+.links-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  line-height: 1.6;
+}
+
+.link-item {
+  color: #8c8c94;
+  font-size: 0.95rem;
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bullet-sep {
+  color: #ff5500;
+  font-size: 0.75rem;
+  margin: 0 1px;
+}
+
+/* ==========================================================================
+   Bottom Banner: Blurred Tower Background, Code Overlays & White ASCII "SURYA"
+   ========================================================================== */
+.footer-create-banner {
   position: relative;
   width: 100%;
-  height: 100svh;
-  background-color: #0f0f0f;
+  flex: 1;
+  min-height: 260px;
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 85% 75% at 50% 68%,
+      #ff5500 0%,
+      #e62b1e 26%,
+      #ce2017 46%,
+      #660b08 72%,
+      #1b0403 88%,
+      #0b0b0d 100%);
+  border-top: 1px solid rgba(206, 32, 23, 0.45);
+  box-shadow:
+    0 -14px 48px rgba(0, 0, 0, 0.85),
+    0 -2px 24px rgba(206, 32, 23, 0.22),
+    inset 0 1px 0 rgba(255, 120, 50, 0.25);
+  cursor: crosshair;
 }
 
-.footer-section canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.footer-section .logo {
+/* Layer 1: Blurred tower background photo receded into deep background */
+.banner-tower-bg {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 75%;
+  inset: -12px;
+  /* Slight bleed to avoid blur clipping */
+  background-image: url("/assets/footer/create-bg.jpg");
+  background-size: cover;
+  background-position: center 55%;
+  filter: blur(5px) brightness(0.65) contrast(1.25);
+  opacity: 0.22;
+  mix-blend-mode: luminosity;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.footer-section .logo img {
+/* Layer 2: Subtle warm ambient gradient overlay */
+.banner-ambient-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 80% at 50% 70%,
+      rgba(255, 85, 0, 0.08) 0%,
+      rgba(206, 32, 23, 0.16) 45%,
+      rgba(11, 11, 13, 0.72) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Layer 3: Blurred & Semi-transparent Code Snippet Overlays */
+.code-overlay-left,
+.code-overlay-right {
+  position: absolute;
+  top: 20px;
+  z-index: 3;
+  pointer-events: none;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(255, 230, 215, 0.38);
+  filter: blur(0.4px);
+  opacity: 0.5;
+  user-select: none;
+}
+
+.code-overlay-left {
+  left: 28px;
+  text-align: left;
+}
+
+.code-overlay-right {
+  right: 28px;
+  text-align: left;
+}
+
+.code-overlay-left pre,
+.code-overlay-right pre {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Layer 4: Interactive ASCII Canvas with White SURYA */
+.ascii-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  z-index: 5;
   display: block;
-  visibility: hidden;
+  touch-action: none;
+}
+
+/* ==========================================================================
+   Bottom Colophon Bar & "Back to Top" Button
+   ========================================================================== */
+.footer-colophon-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 12px;
+  gap: 20px;
+}
+
+.colophon-left {
+  display: flex;
+  align-items: center;
+}
+
+.colophon-text {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: #71717a;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.colophon-sep {
+  color: #ff5500;
+  margin: 0 8px;
+  font-weight: 700;
+  opacity: 0.85;
+}
+
+.colophon-right {
+  display: flex;
+  align-items: center;
+}
+
+/* "Back to Top" Button */
+.back-to-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 9999px;
+  padding: 6px 6px 6px 16px;
+  color: #a1a1aa;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+  user-select: none;
+}
+
+.back-to-top-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 85, 0, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 85, 0, 0.15);
+}
+
+.back-to-top-btn .btt-label {
+  color: #a1a1aa;
+  font-size: 0.82rem;
+  letter-spacing: -0.01em;
+}
+
+.back-to-top-btn:hover .btt-label {
+  color: #ffffff;
+}
+
+.back-to-top-btn .btt-arrow-badge {
+  width: 26px;
+  height: 26px;
+  background: #ff5500;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.back-to-top-btn:hover .btt-arrow-badge {
+  background: #ff6a1a;
+  box-shadow: 0 0 12px rgba(255, 85, 0, 0.5);
+}
+
+.back-to-top-btn .btt-arrow-icon {
+  transition: transform 0.25s ease;
+}
+
+.back-to-top-btn:hover .btt-arrow-icon {
+  transform: translateY(-1.5px);
+}
+
+/* Roll-text hover rules for back-to-top-btn */
+.footer-section .back-to-top-btn:hover .roll-text .roll-default {
+  transform: translateY(-100%);
+}
+
+.footer-section .back-to-top-btn:hover .roll-text .roll-hover {
+  transform: translateY(-100%);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 36px;
+    margin-bottom: 24px;
+  }
+
+  .footer-hero-col {
+    max-width: 100%;
+  }
+
+  .footer-bento-grid {
+    width: 100%;
+    gap: 12px;
+  }
+
+  .footer-create-banner {
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-reveal-wrapper {
+    clip-path: none;
+    pointer-events: auto;
+  }
+
+  .footer-reveal-inner {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    width: 100%;
+  }
+
+  .footer-section {
+    height: auto;
+    min-height: auto;
+    padding: 75px 0 0 0;
+    display: block;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-headline {
+    font-size: 2.25rem;
+  }
+
+  .footer-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .footer-create-banner {
+    height: 240px;
+    min-height: 240px;
+    flex: none;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .code-overlay-left,
+  .code-overlay-right {
+    font-size: 9px;
+    opacity: 0.45;
+  }
+
+  .footer-colophon-bar {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    padding: 16px 0 20px 0;
+  }
+
+  .colophon-text {
+    font-size: 0.65rem;
+  }
 }

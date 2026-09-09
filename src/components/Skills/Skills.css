@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Manrope:wght@200..800&display=swap");
+
 .skills-section {
   --bg: #0f0f0f;
   --fg: #fff;
@@ -8,6 +10,9 @@
   position: relative;
   background-color: var(--bg);
   font-family: "Instrument Serif", sans-serif;
+  overflow: visible;
+  z-index: 2;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.95);
 }
 
 .skills-section img {
@@ -22,38 +27,44 @@
   line-height: 1;
 }
 
-.skills-section p {
-  font-size: 2rem;
-  font-weight: 500;
-  line-height: 1;
-}
+/* ==========================================================================
+   Part 1: Skills Cards Sticky Section
+   ========================================================================== */
 
-.skills-section section {
+.skills-section .sticky {
   position: relative;
   width: 100%;
   height: 100svh;
   padding: 2rem;
   background-color: var(--bg);
   color: var(--fg);
-}
-
-.skills-section .intro,
-.skills-section .outro {
-  text-align: center;
-  align-content: center;
-}
-
-.skills-section .intro h1,
-.skills-section .outro h1 {
-  width: 30%;
-  margin: 0 auto;
-}
-
-.skills-section .sticky {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.skills-section .ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52vw;
+  height: 52vw;
+  max-width: 850px;
+  max-height: 850px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(206, 32, 23, 0.75) 0%,
+    rgba(206, 32, 23, 0.4) 30%,
+    rgba(206, 32, 23, 0.12) 55%,
+    transparent 72%
+  );
+  filter: blur(95px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.1;
+  will-change: transform, opacity;
 }
 
 .skills-section .sticky-header {
@@ -61,6 +72,7 @@
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 2;
 }
 
 .skills-section .sticky-header h1 {
@@ -77,7 +89,8 @@
   display: flex;
   perspective: 1000px;
   transform: translateY(40px);
-  will-change: width;
+  will-change: width, transform, filter, opacity;
+  z-index: 2;
 }
 
 .skills-section .card {
@@ -111,15 +124,158 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  transform: rotateY(180deg);
-  padding: 2rem;
+  transform: rotateY(180deg) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  padding: 2.5rem 2rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+              0 24px 48px -12px rgba(0, 0, 0, 0.55);
+  cursor: default;
+  transition: box-shadow 0.4s ease;
+  will-change: transform, box-shadow;
 }
 
-.skills-section .card-back span {
+.skills-section .card-back:hover {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.32),
+              0 32px 64px -10px rgba(0, 0, 0, 0.75);
+}
+
+.skills-section .card-glare {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
-  opacity: 0.4;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.04) 35%,
+    transparent 55%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  z-index: 1;
+}
+
+.skills-section .card-sheen {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 340px at var(--sheen-x, 50%) var(--sheen-y, 50%),
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.22) 28%,
+    rgba(255, 255, 255, 0.05) 55%,
+    transparent 75%
+  );
+  opacity: var(--sheen-opacity, 0);
+  mix-blend-mode: overlay;
+  will-change: opacity, transform;
+  z-index: 2;
+  transition: opacity 0.35s ease;
+}
+
+.skills-section .card-header-meta {
+  position: absolute;
+  top: 1.8rem;
+  left: 1.8rem;
+  right: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateZ(28px);
+  will-change: transform;
+  z-index: 3;
+}
+
+.skills-section .card-header-meta .card-index {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+}
+
+.skills-section .card-header-meta .card-stamp {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.skills-section #card-1 .card-header-meta {
+  color: #0f0f0f;
+}
+
+.skills-section #card-2 .card-header-meta,
+.skills-section #card-3 .card-header-meta {
+  color: #ffffff;
+}
+
+.skills-section .card-back p {
+  font-size: clamp(1.6rem, 2.2vw, 2.15rem);
+  font-weight: 500;
+  line-height: 1.15;
+  transform: translateZ(42px);
+  will-change: transform;
+  z-index: 3;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  margin: 0;
+  padding: 0 0.5rem;
+}
+
+.skills-section #card-1 .card-back p {
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.skills-section .card-tags {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 1.4rem;
+  right: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  transform: translateZ(32px);
+  will-change: transform;
+  z-index: 3;
+}
+
+.skills-section .card-tag {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  padding: 0.32rem 0.68rem;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.skills-section .card-tag:hover {
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Card 1 light platinum styling */
+.skills-section #card-1 .card-tag {
+  background: rgba(15, 15, 15, 0.08);
+  border: 1px solid rgba(15, 15, 15, 0.18);
+  color: #0f0f0f;
+}
+
+.skills-section #card-1 .card-tag:hover {
+  background: rgba(15, 15, 15, 0.16);
+  border-color: rgba(15, 15, 15, 0.35);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .skills-section #card-1 .card-back {
@@ -135,14 +291,271 @@
   background-color: var(--card-3);
 }
 
+/* ==========================================================================
+   Part 2: Testimonials Pinned & Marquee Section
+   ========================================================================== */
+
+.skills-section .testimonials-wrapper {
+  --testimonials-bg: #0f0f0f;
+  --testimonials-fg: #ffffff;
+  width: 100vw;
+  position: relative;
+  background-color: var(--testimonials-bg);
+  color: var(--testimonials-fg);
+  font-family: "Manrope", sans-serif;
+  overflow: visible;
+}
+
+/* Reset any globals.css span rule inside testimonials wrapper */
+.skills-section .testimonials-wrapper span {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  display: inline-block;
+}
+
+.skills-section .testimonials-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.skills-section .testimonials-wrapper .container {
+  position: relative;
+  width: 100%;
+  height: 600vh; /* Smooth scroll duration for the 3 text transitions */
+}
+
+.skills-section .testimonials-wrapper .hero {
+  display: block !important;
+  padding: 0 !important;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+  background-color: var(--testimonials-bg);
+  box-sizing: border-box;
+}
+
+.skills-section .testimonials-nav {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  padding: 2rem 3rem;
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.skills-section .testimonials-nav p {
+  text-transform: uppercase;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.8rem;
+  line-height: 1;
+  color: #cccccc;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.skills-section .about-copy {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-55%);
+  width: 100%;
+  padding: 2rem 3rem;
+  display: flex;
+  gap: 4rem;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+.skills-section .copy-block {
+  flex: 1;
+  position: relative;
+}
+
+.skills-section .copy-block p {
+  font-family: "Manrope", sans-serif !important;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem) !important;
+  font-weight: 450 !important;
+  letter-spacing: -0.025rem !important;
+  line-height: 1.3 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.skills-section .copy-block p * {
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
+  line-height: inherit !important;
+  text-transform: none !important;
+}
+
+/* Word masking for smooth vertical reveal */
+.skills-section .word-mask {
+  display: inline-block !important;
+  overflow: hidden !important;
+  vertical-align: top !important;
+  margin-right: 0.28em !important;
+  line-height: inherit !important;
+}
+
+.skills-section .word {
+  display: inline-block !important;
+  will-change: transform !important;
+  line-height: inherit !important;
+}
+
+.skills-section .scroll-indicator {
+  position: absolute;
+  width: 10rem;
+  height: 0.12rem;
+  top: 3rem;
+  right: 2.5rem;
+  background-color: #2f2f2f;
+  z-index: 10;
+}
+
+.skills-section .scroll-indicator::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  transform-origin: left;
+  transform: scaleX(var(--progress, 0));
+  will-change: transform;
+}
+
+.skills-section .marquee {
+  position: absolute;
+  left: 0;
+  bottom: 2rem;
+  width: 100%;
+  height: 8.5rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.skills-section .marquee-track {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.8rem 0;
+  will-change: transform;
+}
+
+.skills-section .marquee-item {
+  flex-shrink: 0;
+  width: 10.5rem;
+  height: 6.5rem;
+  border-radius: 0.45rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  will-change: transform, box-shadow;
+}
+
+.skills-section .marquee-item:hover {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85),
+              0 0 25px rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.32);
+  z-index: 10;
+}
+
+.skills-section .marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.skills-section .marquee-item:hover img {
+  transform: scale(1.05);
+}
+
+.skills-section .marquee-caption {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 10, 0.94) 0%,
+    rgba(10, 10, 10, 0.55) 45%,
+    transparent 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0.6rem 0.75rem;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  border-radius: inherit;
+  box-sizing: border-box;
+}
+
+.skills-section .marquee-item:hover .marquee-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills-section .caption-tag {
+  font-family: "Geist Mono", monospace !important;
+  font-size: 0.55rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  color: #ce2017 !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  margin-bottom: 0.2rem !important;
+  display: block !important;
+}
+
+.skills-section .caption-name {
+  font-family: "Manrope", sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  color: #ffffff !important;
+  line-height: 1.15 !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  display: block !important;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
 @media (max-width: 1000px) {
   .skills-section h1 {
     font-size: 3rem;
-  }
-
-  .skills-section .intro h1,
-  .skills-section .outro h1 {
-    width: 100%;
   }
 
   .skills-section .sticky {
@@ -181,5 +594,21 @@
   .skills-section #card-3,
   .skills-section .card-back {
     transform: none;
+  }
+
+  .skills-section .testimonials-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .skills-section .about-copy {
+    top: 45%;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .skills-section .copy-block p {
+    font-size: 1.25rem !important;
   }
 }

@@ -4,9 +4,9 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import "./Hackathons1.css";
+import "./Achievements.css";
 
-export default function Hackathons1() {
+export default function Achievements() {
   const containerRef = useRef(null);
 
   useGSAP(
@@ -14,31 +14,106 @@ export default function Hackathons1() {
       gsap.registerPlugin(ScrollTrigger);
 
       const sections = containerRef.current.querySelectorAll("section");
+      const pinTriggers = [];
 
       sections.forEach((section, index) => {
         const innerContainer = section.querySelector(".container");
+        if (!innerContainer) return;
 
-        gsap.to(innerContainer, {
-          rotation: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "top 20%",
-            scrub: true,
+        gsap.fromTo(
+          innerContainer,
+          {
+            rotation: 30,
+            transformOrigin: "bottom left",
           },
-        });
+          {
+            rotation: 0,
+            transformOrigin: "bottom left",
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "top 20%",
+              scrub: 1.2,
+            },
+          }
+        );
+
+        // Inner Image Parallax (Cards 2, 3, & 4):
+        // Scale 1.15 with subtle vertical counter-drift as the card rotates into place
+        const img = section.querySelector(".img img");
+        if (img) {
+          gsap.fromTo(
+            img,
+            {
+              scale: 1.15,
+              yPercent: 12,
+            },
+            {
+              scale: 1.15,
+              yPercent: -12,
+              ease: "none",
+              scrollTrigger: {
+                trigger: section,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: 1.2,
+              },
+            }
+          );
+        }
+
+        // Deck depth stacking: stays fully bright & normal size until next card is halfway up (top 50%)
+        // Then smoothly scales to 0.95 and softly dims to 0.90 as next card finishes covering it
+        if (index < sections.length - 1) {
+          const nextSection = sections[index + 1];
+
+          gsap.fromTo(
+            innerContainer,
+            {
+              scale: 1,
+              filter: "brightness(1)",
+              transformOrigin: "center center",
+            },
+            {
+              scale: 0.95,
+              filter: "brightness(0.90)",
+              transformOrigin: "center center",
+              ease: "none",
+              scrollTrigger: {
+                trigger: nextSection,
+                start: "top 50%",
+                end: "top top",
+                scrub: 1.2,
+              },
+            }
+          );
+        }
 
         if (index === sections.length - 1) return;
 
-        ScrollTrigger.create({
+        const pin = ScrollTrigger.create({
           trigger: section,
           start: "bottom bottom",
           end: "bottom top",
           pin: true,
           pinSpacing: false,
+          anticipatePin: 1,
         });
+
+        pinTriggers.push(pin);
       });
+
+      // Recalculate triggers after previous layout sections settle
+      ScrollTrigger.refresh();
+      const refreshTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 500);
+
+      return () => {
+        clearTimeout(refreshTimer);
+        pinTriggers.forEach((p) => p.kill());
+      };
     },
     { scope: containerRef }
   );
@@ -160,9 +235,7 @@ export default function Hackathons1() {
         </div>
       </section>
 
-      <footer>
-        <h1>Footer</h1>
-      </footer>
+
     </div>
   );
 }

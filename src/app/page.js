@@ -4,12 +4,12 @@ import { ReactLenis } from "lenis/react";
 import LandingPage from "@/components/LandingPage/LandingPage";
 import Intro from "@/components/Intro/Intro";
 import Education from "@/components/Education/Education";
-import ProjectTextReveal from "@/components/ProjectTextReveal/ProjectTextReveal";
+import Projects_new from "@/components/Projects_new/Projects_new";
+import ExperienceTunnel from "@/components/ExperienceTunnel/ExperienceTunnel";
 import Experience from "@/components/Experience/Experience";
-import Hackathons1 from "@/components/Hackathons1/Hackathons1";
+import Achievements from "@/components/Achievements/Achievements";
 import Hackathons2 from "@/components/Hackathons2/Hackathons2";
 import Skills from "@/components/Skills/Skills";
-import Testimonials from "@/components/Testimonials/Testimonials";
 import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
@@ -19,13 +19,13 @@ export default function Home() {
         <main style={{ overflowX: "hidden" }}>
           <LandingPage />
           <Intro />
-          <ProjectTextReveal />
           <Education />
+          <Projects_new />
+          <ExperienceTunnel />
           <Experience />
-          <Hackathons1 />
+          <Achievements />
           <Hackathons2 />
           <Skills />
-          <Testimonials />
           <Footer />
         </main>
       </ReactLenis>

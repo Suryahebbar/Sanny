@@ -35,27 +35,7 @@
   object-fit: cover;
 }
 
-.project-text-reveal-section nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  padding: 1.5em 2em;
-}
 
-.project-text-reveal-section nav .col:nth-child(1) {
-  display: flex;
-}
-
-.project-text-reveal-section nav .col:nth-child(2) {
-  text-align: right;
-}
-
-.project-text-reveal-section nav span {
-  color: #909090;
-  mix-blend-mode: difference;
-}
 
 .project-text-reveal-section section {
   position: relative;
@@ -308,9 +288,6 @@
     font-size: 2rem;
   }
 
-  .project-text-reveal-section nav .col:nth-child(1) .sub-col:nth-child(2) {
-    display: none;
-  }
 
   .project-text-reveal-section .hero .header {
     width: 95%;

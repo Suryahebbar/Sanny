@@ -1,8 +1,32 @@
 .education-section {
+  font-family: "Lay Grotesk - Trial", sans-serif;
   width: 100vw;
-  font-family: "Apple Garamond Light", serif;
   position: relative;
-  background-color: #ded8c8;
+  background-color: #fff;
+  color: #000;
+}
+
+.education-section h1 {
+  font-size: 3.5rem;
+  font-weight: 500;
+  letter-spacing: -0.05rem;
+  line-height: 1;
+}
+
+.education-section p {
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 1em;
+}
+
+.education-section span {
+  color: #000;
+  display: block;
+  text-transform: uppercase;
+  font-family: "Apercu Mono Pro";
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 .education-section img {
@@ -11,120 +35,89 @@
   object-fit: cover;
 }
 
-.education-section nav {
-  position: absolute;
-  top: 0;
+.education-section section {
+  position: relative;
   width: 100vw;
-  padding: 1em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
+  height: 100svh;
+  padding: 2em;
 }
 
-.education-section .logo,
-.education-section .nav-items {
+.education-section .col,
+.education-section .sub-col {
   flex: 1;
 }
 
-.education-section nav a {
-  text-decoration: none;
-  color: #000;
-  font-size: 24px;
-  letter-spacing: -0.02em;
-}
-
-.education-section .nav-items {
-  display: flex;
-  justify-content: center;
-  gap: 2em;
-}
-
-.education-section section {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.education-section .hero {
-  background: url(/assets/education/hero.jpg) no-repeat 50% 50%;
-  background-size: cover;
-}
-
-
-.education-section .sticky {
-  position: relative;
-  background-color: #ded8c8;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.education-section .sticky-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 250vw;
-  height: 100%;
+.education-section .hero,
+.education-section .about-img {
   display: flex;
   justify-content: center;
   align-items: center;
-  will-change: transform;
 }
 
-.education-section .sticky-header h1 {
-  margin: 0;
-  color: #000;
-  font-size: 30vw;
-  font-weight: lighter;
-  letter-spacing: -0.05em;
-  line-height: 100%;
-}
-
-.education-section .card {
+.education-section .hero-img {
   position: absolute;
-  top: 10%;
-  left: 100%;
-  width: 325px;
-  height: 500px;
-  background-color: #000;
-  border-radius: 1em;
-  padding: 0.5em;
-  will-change: transform;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.education-section .hero .header {
+  width: 50%;
+  text-align: center;
   z-index: 2;
 }
 
-.education-section .card .card-img {
-  width: 100%;
-  height: 200px;
-  border-radius: 0.5em;
-  overflow: hidden;
+.education-section .hero .header h1 {
+  color: #909090;
 }
 
-.education-section .card-content {
-  width: 100%;
-  height: 275px;
+.education-section .about-img {
+  height: max-content;
+  padding: 8em 2em;
+}
+
+.education-section .about-img img {
+  width: 20%;
+  aspect-ratio: 4/5;
+}
+
+.education-section .about {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #fff;
-  padding: 0.5em;
 }
 
-.education-section .card-content h2 {
-  font-size: 42px;
-  font-weight: lighter;
-  letter-spacing: -0.005em;
+.education-section .about h1 {
+  text-indent: 25%;
 }
 
-.education-section .card-content p {
-  font-size: 20px;
-  font-weight: lighter;
-  letter-spacing: -0.005em;
+.education-section .story {
+  height: max-content;
+  display: flex;
+  gap: 1em;
+  margin-bottom: 8em;
+}
+
+.education-section .line {
+  transform: translateY(100%);
+  will-change: transform;
 }
 
 @media (max-width: 900px) {
-  .education-section .nav-items {
-    justify-content: flex-end;
+  .education-section h1 {
+    font-size: 2rem;
+  }
+
+  .education-section .hero .header {
+    width: 95%;
+  }
+
+  .education-section .about-img img {
+    width: 100%;
+  }
+
+  .education-section .story {
+    flex-direction: column;
   }
 }

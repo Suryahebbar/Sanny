@@ -1,11 +1,15 @@
 .navbar {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+  mix-blend-mode: difference;
+  pointer-events: none;
 }
 
 .navbar-logo {
@@ -18,14 +22,20 @@
 }
 
 .navbar-item {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
 }
 
 .navbar-item a {
+  pointer-events: auto;
   text-decoration: none;
-  color: var(--fg);
+  color: #ffffff;
   font-family: var(--font-dm-sans);
   font-size: 1.125rem;
   font-weight: 500;
-  letter-spacing: -2%;
+  letter-spacing: -0.02em;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-item a:hover {
+  opacity: 0.7;
 }

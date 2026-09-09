@@ -1,3 +1,6 @@
+@import url("https://fonts.cdnfonts.com/css/newsflash-bb");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
 .hackathons1-section {
   --base-100: #8e9487;
   --base-200: #1e1e1c;
@@ -40,7 +43,15 @@
   height: 100svh;
   min-height: 100svh;
   overflow: hidden;
+  box-shadow: 0 -25px 60px rgba(0, 0, 0, 0.4);
 }
+
+.hackathons1-section section.one { z-index: 1; }
+.hackathons1-section section.two { z-index: 2; }
+.hackathons1-section section.three { z-index: 3; }
+.hackathons1-section section.four { z-index: 4; }
+.hackathons1-section section.five { z-index: 5; }
+.hackathons1-section section.six { z-index: 6; }
 
 .hackathons1-section section.four {
   height: 200svh;
@@ -54,7 +65,8 @@
   display: flex;
   transform: rotate(30deg);
   transform-origin: bottom left;
-  will-change: transform;
+  will-change: transform, filter;
+  box-shadow: 0 -25px 60px rgba(0, 0, 0, 0.4);
 }
 
 .hackathons1-section .one .container {
@@ -99,6 +111,14 @@
   overflow: hidden;
 }
 
+.hackathons1-section .img {
+  overflow: hidden;
+}
+
+.hackathons1-section .img img {
+  will-change: transform;
+}
+
 .hackathons1-section .one .container .col:nth-child(2),
 .hackathons1-section .five .container .col:nth-child(2),
 .hackathons1-section .six .container .col:nth-child(2) {
@@ -134,17 +154,6 @@
   width: 50%;
 }
 
-.hackathons1-section footer {
-  position: relative;
-  width: 100%;
-  height: 70svh;
-  padding: 2rem;
-  background-color: #0f0f0f;
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 @media (max-width: 1000px) {
   .hackathons1-section p {
